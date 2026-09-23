@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 import { AuthContext } from '../context/AuthContext';
 import { Search, MapPin, Calendar, IndianRupee, Tag } from 'lucide-react';
 
@@ -37,7 +37,7 @@ const SearchDestinations = () => {
         headers: { Authorization: `Bearer ${user.token}` }
       };
       
-      const { data } = await axios.post('http://localhost:5000/api/itinerary/generate', formData, config);
+      const { data } = await api.post('/itinerary/generate', formData, config);
       navigate(`/planner?id=${data._id}`);
     } catch (error) {
       console.error('Error generating itinerary', error);

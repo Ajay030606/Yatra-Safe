@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import axios from 'axios';
+import api from '../services/api';
 import { ShieldAlert, MapPin, Clock, Phone, AlertTriangle } from 'lucide-react';
 
 const Emergency = () => {
@@ -16,7 +16,7 @@ const Emergency = () => {
   const fetchHistory = async () => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const { data } = await axios.get('http://localhost:5000/api/emergency/history', config);
+      const { data } = await api.get('/emergency/history', config);
       setHistory(data);
     } catch (error) {
       console.error('Error fetching history', error);
@@ -35,7 +35,7 @@ const Emergency = () => {
           
           try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.post('http://localhost:5000/api/emergency', {
+            await api.post('/emergency', {
               latitude: lat,
               longitude: lng
             }, config);

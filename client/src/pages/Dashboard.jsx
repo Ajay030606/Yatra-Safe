@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import axios from 'axios';
+import api from '../services/api';
 import { Map, Calendar, Shield, Clock, Compass } from 'lucide-react';
 
 const Dashboard = () => {
@@ -14,7 +14,7 @@ const Dashboard = () => {
         const config = {
           headers: { Authorization: `Bearer ${user.token}` }
         };
-        const { data } = await axios.get('http://localhost:5000/api/itinerary', config);
+        const { data } = await api.get('/itinerary', config);
         setItineraries(data);
       } catch (error) {
         console.error('Error fetching itineraries', error);

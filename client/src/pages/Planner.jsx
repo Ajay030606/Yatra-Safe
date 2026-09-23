@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 import { AuthContext } from '../context/AuthContext';
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -68,7 +68,7 @@ const Planner = () => {
     const fetchItinerary = async () => {
       try {
         const config = { headers: { Authorization: `Bearer ${user.token}` } };
-        const { data } = await axios.get(`http://localhost:5000/api/itinerary/${itineraryId}`, config);
+        const { data } = await api.get(`/itinerary/${itineraryId}`, config);
         setItinerary(data);
         setLoading(false);
       } catch (error) {
