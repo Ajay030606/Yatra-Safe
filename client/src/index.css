@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Patrick+Hand&display=swap');
+
+@theme {
+  /* Brand Colors from Reference Image */
+  --color-brand-teal: #64a19d;          /* Main background / theme color */
+  --color-brand-teal-dark: #497d7a;     /* Darker teal for hovers/accents */
+  --color-brand-teal-light: #b3d5d3;    /* Light teal for soft backgrounds */
+  --color-brand-tan: #e6b772;           /* Primary button/accent color */
+  --color-brand-tan-dark: #d6a258;      /* Hover for tan */
+  --color-brand-tan-light: #f3d4a6;
+  --color-brand-dark: #111827;          /* Dark text */
+  --color-brand-light: #f9fafb;         /* Light text/bg */
+
+  --font-serif: 'Cabin Sketch', cursive; /* Highly textured for headings */
+  --font-sans: 'Patrick Hand', cursive;  /* Smooth hand-drawn marker for ALL other text */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-light);
+  color: var(--color-brand-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Custom utility for the glassmorphism effect seen in the image */
+@utility glass-container {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 4px solid rgba(255, 255, 255, 0.9);
+  border-radius: 2rem;
+}
